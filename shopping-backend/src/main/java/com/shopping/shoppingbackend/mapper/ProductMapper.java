@@ -31,6 +31,16 @@ public class ProductMapper {
         return product;
     }
 
+    public static Product toEntity(String name, java.math.BigDecimal price, byte[] imageData, String contentType) {
+        Product product = new Product();
+        product.setName(name);
+        product.setPrice(price);
+//        product.setImageData(imageData);
+//        product.setImageContentType(contentType);
+        product.setActive(true);
+        return product;
+    }
+
     public static void updateEntityFromRequest(ProductRequest request, Product product) {
         if (request == null || product == null) {
             return;

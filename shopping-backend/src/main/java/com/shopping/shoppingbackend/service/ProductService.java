@@ -1,5 +1,6 @@
 package com.shopping.shoppingbackend.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.shopping.shoppingbackend.dto.ProductRequest;
 import com.shopping.shoppingbackend.dto.ProductResponse;
@@ -144,4 +146,10 @@ public class ProductService implements IProductService {
             throw new BusinessException("PRODUCT_DEACTIVATE_ERROR", "Failed to deactivate product");
         }
     }
+
+	@Override
+	public ProductResponse addProduct(String name, BigDecimal price, MultipartFile image) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

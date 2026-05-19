@@ -33,6 +33,14 @@ public class Product {
 
     @Column(columnDefinition = "TEXT")
     private String imageUrl;
+
+//    @Lob
+//    @Basic(fetch = FetchType.LAZY)
+//    @Column(name = "image_data")
+//    private byte[] imageData;
+
+//    @Column(name = "image_content_type", length = 100)
+//    private String imageContentType;
     
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
     private boolean active = true;
@@ -93,6 +101,22 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+//    public byte[] getImageData() {
+//        return imageData;
+//    }
+//
+//    public void setImageData(byte[] imageData) {
+//        this.imageData = imageData;
+//    }
+
+//    public String getImageContentType() {
+//        return imageContentType;
+//    }
+//
+//    public void setImageContentType(String imageContentType) {
+//        this.imageContentType = imageContentType;
+//    }
 
     public boolean isActive() {
         return active;

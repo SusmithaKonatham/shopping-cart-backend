@@ -13,6 +13,8 @@ public interface IProductService {
 
     ProductResponse addProduct(ProductRequest request);
 
+    ProductResponse addProduct(String name, java.math.BigDecimal price, org.springframework.web.multipart.MultipartFile image);
+
     ProductResponse updateProduct(Long id, ProductRequest request);
 
     void deleteProduct(Long id);
