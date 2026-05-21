@@ -117,11 +117,23 @@ public class ProductController {
         );
     }
 
-    @PatchMapping("/api/products/{id}/deactivate")
-    public ResponseEntity<ApiResponse<Void>> deactivateProductLegacy(@PathVariable Long id) {
-        productService.deactivateProduct(id);
+//    @PatchMapping("/api/products/{id}/deactivate")
+//    public ResponseEntity<ApiResponse<Void>> deactivateProductLegacy(@PathVariable Long id) {
+//        productService.deactivateProduct(id);
+//        return ResponseEntity.ok(
+//            new ApiResponse<>("Product deactivated successfully", null)
+//        );
+//    }
+    @PatchMapping("/api/v1/products/{id}/activate")
+    public ResponseEntity<ApiResponse<Void>> activateProduct(
+            @PathVariable Long id) {
+
+       productService.activateProduct(id);
+
         return ResponseEntity.ok(
-            new ApiResponse<>("Product deactivated successfully", null)
+              new  ApiResponse<>(
+                        "Product activated successfully",
+                        null )
         );
     }
 }

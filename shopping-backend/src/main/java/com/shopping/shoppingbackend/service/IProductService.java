@@ -20,4 +20,6 @@ public interface IProductService {
     void deleteProduct(Long id);
 
     void deactivateProduct(Long id);
+    
+    void activateProduct(Long id);
 }

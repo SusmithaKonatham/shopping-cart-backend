@@ -38,7 +38,7 @@ public class ProductService implements IProductService {
     public List<ProductResponse> getAllProducts() {
         logger.debug("Fetching all active products");
         try {
-            List<Product> products = productRepository.findByActiveTrue();
+            List<Product> products = productRepository.findAll();
             logger.info("Retrieved {} active products", products.size());
             return products.stream()
                     .map(ProductMapper::toResponse)
@@ -152,4 +152,24 @@ public class ProductService implements IProductService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void activateProduct(Long id) {
+        logger.debug("Activating product with id: {}", id);
+        
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> {
+                    logger.warn("Product not found for activation: id={}", id);
+                    return new ResourceNotFoundException("Product", "id", id);
+                });
+
+        try {
+            product.setActive(true);
+            productRepository.save(product);
+            logger.info("Product activated successfully - id: {}, name: {}", id, product.getName());
+        } catch (Exception ex) {
+            logger.error("Error activating product with id: {}", id, ex);
+            throw new BusinessException("PRODUCT_ACTIVATE_ERROR", "Failed to activate product");
+        }
+    }
 }
